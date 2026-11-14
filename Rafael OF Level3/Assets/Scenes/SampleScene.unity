@@ -375,8 +375,8 @@ MonoBehaviour:
   hpImage: {fileID: 1728754617}
   hp: 9
   deathDuration: 3
-  hitFX: {fileID: 0}
-  deathFX: {fileID: 0}
+  hitFX: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
+  deathFX: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6, type: 3}
   audioSource: {fileID: 888090524}
   attackSFX: {fileID: 0}
   hitSFX: {fileID: 0}
@@ -1814,14 +1814,16 @@ MonoBehaviour:
   attackRadius: 2
   attackHitDelay: 0.7
   damage: 1
+  hp: 3
+  deathDuration: 5
   attackHitFX: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   hitFX: {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   deathFX: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
   audioSource: {fileID: 1894784115}
   attackSFX: {fileID: 0}
   attackHitSFX: {fileID: 0}
-  HitSFX: {fileID: 0}
-  DeathSFX: {fileID: 0}
+  hitSFX: {fileID: 0}
+  deathSFX: {fileID: 0}
 --- !u!136 &1894784113
 CapsuleCollider:
   m_ObjectHideFlags: 0

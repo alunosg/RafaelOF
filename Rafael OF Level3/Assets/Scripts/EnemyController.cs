@@ -17,6 +17,9 @@ public class EnemyController : MonoBehaviour
     public float attackHitDelay = 0.75f;
     public float damage =  1;
 
+    public float hp = 3;
+    public float deathDuration = 5;
+
     public GameObject attackHitFX;
     public GameObject hitFX;
     public GameObject deathFX;
@@ -24,8 +27,8 @@ public class EnemyController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip attackSFX;
     public AudioClip attackHitSFX;
-    public AudioClip HitSFX;
-    public AudioClip DeathSFX;
+    public AudioClip hitSFX;
+    public AudioClip deathSFX;
 
     private PlayerController player;
     private float distance = 999;
@@ -160,4 +163,38 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
+    public void GetHit(float damage)
+    {
+        if(hp > 0)
+        {
+            hp -= damage;
+
+            if (hitFX) Instantiate(hitFX, transform.position, transform.rotation);
+            if (hitSFX) audioSource.PlayOneShot(hitSFX);
+
+            nav.isStopped = true;
+
+            if(hp > 0)
+            {
+                anim.SetTrigger ("Hit");                
+            }
+            else
+            {
+                anim.SetTrigger ("Death");
+
+                if (deathSFX) audioSource.PlayOneShot(deathSFX);
+               
+                locked = true;
+
+                CancelInvoke("Autodestroy");
+                Invoke("AutoDestroy", deathDuration);
+            }
+
+            anim.SetBool("IsRunning", false);
+            state = EnemyStates.Idle;
+        }
+    }
+
+    private void AutoDestroy() => Destroy (gameObject);
 }
